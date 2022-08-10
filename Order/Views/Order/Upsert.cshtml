@@ -1,0 +1,128 @@
+﻿@model global::Order.Models.OrderModel
+
+<br />
+<h2 class="text-info">@(Model.OrderId!= 0? "Edit":"Create") Order</h2>
+<br />
+<div class="border container pt-5">
+    <form method="post" asp-action="Upsert">
+        @if (Model.OrderId != 0)
+        {
+            <input type="hidden" asp-for="OrderId" />
+        }
+        <div class="text-danger" asp-validation-summary="ModelOnly"></div>
+        <div class="form-group row">
+            <div class="col-3">
+                <label asp-for="TrackerCode">Tracker Code</label>
+            </div>
+            <div class="col-6">
+                <input asp-for="TrackerCode" class="form-control" />
+                <span asp-validation-for="TrackerCode" class="text-danger"></span>
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <div class="col-3">
+                <label asp-for="TotalPrice">Total Price</label>
+            </div>
+            <div class="col-6">
+                <input asp-for="TotalPrice" class="form-control" />
+                <span asp-validation-for="TotalPrice" class="text-danger"></span>
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <div class="col-3">
+                <label asp-for="PaymentType">Payment Type</label>
+            </div>
+            <div class="col-6">
+                <input asp-for="PaymentType" class="form-control" />
+                <span asp-validation-for="PaymentType" class="text-danger"></span>
+            </div>
+        </div>
+
+         <div class="form-group row">
+            <div class="col-3">
+                <label asp-for="IsActive">Is Active</label>
+            </div>
+            <div class="col-6">
+                <input asp-for="IsActive" class="form-control" />
+                <span asp-validation-for="IsActive" class="text-danger"></span>
+            </div>
+        </div>
+
+          <div class="form-group row">
+            <div class="col-3">
+                <label asp-for="CreatedTime">Created Time</label>
+            </div>
+            <div class="col-6">
+                <input asp-for="CreatedTime" class="form-control" />
+                <span asp-validation-for="CreatedTime" class="text-danger"></span>
+            </div>
+        </div>
+
+         <div class="form-group row">
+            <div class="col-3">
+                <label asp-for="CreatedUserId">Created User Id</label>
+            </div>
+            <div class="col-6">
+                <input asp-for="CreatedUserId" class="form-control" />
+                <span asp-validation-for="CreatedUserId" class="text-danger"></span>
+            </div>
+        </div>
+   
+         <div class="form-group row">
+            <div class="col-3">
+                <label asp-for="ModifiedTime">Modified Time</label>
+            </div>
+            <div class="col-6">
+                <input asp-for="ModifiedTime" class="form-control" />
+                <span asp-validation-for="ModifiedTime" class="text-danger"></span>
+            </div>
+        </div>
+
+         <div class="form-group row">
+            <div class="col-3">
+                <label asp-for="ModifiedUserId">Modified User Id</label>
+            </div>
+            <div class="col-6">
+                <input asp-for="ModifiedUserId" class="form-control" />
+                <span asp-validation-for="ModifiedUserId" class="text-danger"></span>
+            </div>
+        </div>
+
+         <div class="form-group row">
+            <div class="col-3">
+                <label asp-for="DeletedTime">Deleted Time</label>
+            </div>
+            <div class="col-6">
+                <input asp-for="DeletedTime" class="form-control" />
+                <span asp-validation-for="DeletedTime" class="text-danger"></span>
+            </div>
+        </div>
+
+         <div class="form-group row">
+            <div class="col-3">
+                <label asp-for="DeletedUserId">Deleted User Id</label>
+            </div>
+            <div class="col-6">
+                <input asp-for="DeletedUserId" class="form-control" />
+                <span asp-validation-for="DeletedUserId" class="text-danger"></span>
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <div class="col-3 offset-3">
+                <button type="submit" class="btn btn-primary form-control">
+                    @(Model.OrderId!= 0? "Update":"Create")
+                </button>
+            </div>
+            <div class="col-3">
+                <a asp-action="Index" class="btn btn-success form-control">Back To List</a>
+            </div>
+        </div>
+    </form>
+</div>
+
+@section Scripts{ 
+<partial name="_ValidationScriptsPartial" />
+}
