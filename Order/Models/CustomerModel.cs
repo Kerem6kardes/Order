@@ -1,12 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Order.Models
 {
     public class CustomerModel
     {
+        [DatabaseGenerated(DatabaseGeneratedOption.None)]
         [Key]
         public int CustomerId { get; set; }
         [Required]

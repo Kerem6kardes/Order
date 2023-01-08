@@ -1,11 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Order.Models
 {
     public class ItemModel
     {
+        [DatabaseGenerated(DatabaseGeneratedOption.None)]
         [Key]
         public int ItemId { get; set; }
         [Required]

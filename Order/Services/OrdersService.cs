@@ -30,7 +30,22 @@ namespace my_orders.Data.Services
                 ModifiedUserId = order.ModifiedUserId,
                 DeletedTime = order.DeletedTime,
                 DeletedUserId = order.DeletedUserId,
+                
+                Item = new ItemModel 
+                { 
+                    ItemName = order.Item.ItemName, 
+                    Price = order.Item.Price, 
+                    Barcode = order.Item.Barcode
+                },
+                                
+                BillingAddress = new BillingAddressModel 
+                { 
+                    BillingAddressType = order.BillingAddress.BillingAddressType,
+                    City = order.BillingAddress.City
+                    
+                },
 
+                PayOnDelivery = new PayOnDeliveryModel { PaymentAmount = order.PayOnDelivery.PaymentAmount },
 
                 Customer = new CustomerModel
                 {
@@ -40,9 +55,7 @@ namespace my_orders.Data.Services
                     EmailAllowed = order.Customer.EmailAllowed,
                     EmailAddress = order.Customer.EmailAddress
                 },
-                Item = new ItemModel { ItemName = order.Item.ItemName, Price = order.Item.Price, Barcode = order.Item.Barcode },
-                BillingAddress = new BillingAddressModel {  BillingAddressType= order.BillingAddress.BillingAddressType},
-                PayOnDelivery = new PayOnDeliveryModel { PaymentAmount = order.PayOnDelivery.PaymentAmount },
+                
             };
             _database.Order.Add(order);
             _database.SaveChanges();                                         

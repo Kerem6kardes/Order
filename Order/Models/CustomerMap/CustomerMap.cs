@@ -22,7 +22,7 @@ namespace Customer.Model.CustomerMap
             builder.Property(c => c.DeletedTime).IsRequired(true);
             builder.Property(c => c.DeletedUserId).IsRequired(true);
             builder.ToTable("Customer");
-            builder.HasMany<OrderModel>(e => e.Order).WithOne(o => o.Customer).HasForeignKey(e => e.OrderId);//.HasPrincipalKey(sc => sc.CustomerId);
+            //builder.HasMany<OrderModel>(e => e.Order).WithOne(o => o.Customer).HasForeignKey(e => e.OrderId);//.HasPrincipalKey(sc => sc.CustomerId);
         }
     }
 }

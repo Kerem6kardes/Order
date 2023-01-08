@@ -8,7 +8,7 @@ namespace Order.Models
 {
     public class OrderModel 
     {
-        [DatabaseGeneratedAttribute(DatabaseGeneratedOption.Identity)]
+        [DatabaseGenerated(DatabaseGeneratedOption.None)]
         [Key]
         public int OrderId { get; set; }
         [Required]
@@ -23,7 +23,6 @@ namespace Order.Models
         public ItemModel Item { get; set; }
         public PayOnDeliveryModel PayOnDelivery { get; set; }
         public BillingAddressModel BillingAddress { get; set; }
-        public CityModel City { get; set; }
         public bool IsActive { get; set; } = true;
         public DateTime CreatedTime { get; set; } = DateTime.Now;
         public int CreatedUserId { get; set; } = 1;

@@ -79,9 +79,6 @@ namespace Order.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("CityId"), 1L, 1);
 
-                    b.Property<int>("BillingAddressId")
-                        .HasColumnType("int");
-
                     b.Property<string>("CityName")
                         .IsRequired()
                         .HasMaxLength(15)
@@ -237,9 +234,6 @@ namespace Order.Migrations
                     b.Property<int>("BillingAddressId")
                         .HasColumnType("int");
 
-                    b.Property<int?>("CityId")
-                        .HasColumnType("int");
-
                     b.Property<DateTime>("CreatedTime")
                         .HasColumnType("datetime2");
 
@@ -291,7 +285,7 @@ namespace Order.Migrations
 
                     b.HasIndex("BillingAddressId");
 
-                    b.HasIndex("CityId");
+                    b.HasIndex("CustomerId");
 
                     b.HasIndex("ItemId");
 
@@ -360,19 +354,15 @@ namespace Order.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("Order.Models.CityModel", "City")
-                        .WithMany()
-                        .HasForeignKey("CityId");
+                    b.HasOne("Order.Models.CustomerModel", "Customer")
+                        .WithMany("Order")
+                        .HasForeignKey("CustomerId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.HasOne("Order.Models.ItemModel", "Item")
                         .WithMany("Order")
                         .HasForeignKey("ItemId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("Order.Models.CustomerModel", "Customer")
-                        .WithMany("Order")
-                        .HasForeignKey("OrderId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -383,8 +373,6 @@ namespace Order.Migrations
                         .IsRequired();
 
                     b.Navigation("BillingAddress");
-
-                    b.Navigation("City");
 
                     b.Navigation("Customer");
 
